@@ -23,15 +23,15 @@ public class inventoryManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if(SwitchBool == false)
+            if(SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
             {
-                // play anis here
+               
                 StartCoroutine(switchDelayToKnife());
              
             }
-            else if(SwitchBool == true)
+            else if(SwitchBool == true && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
             {    
-                // play anis here
+               
                 StartCoroutine(switchDelayToAk());
               
             }

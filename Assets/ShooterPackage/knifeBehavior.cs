@@ -29,11 +29,12 @@ public class knifeBehavior : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) && !isInsp)
         {
             StartCoroutine(inspect());
-            Debug.Log("Inspecting");
+            Debug.Log("Inspecting knife");
         }
     }
     IEnumerator stab()
     {
+       
         Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, 5f);
         if (hit.collider.tag == "Enemy")
         {
@@ -44,9 +45,9 @@ public class knifeBehavior : MonoBehaviour
         {
             Debug.Log("Missed");
         }
+
         isStabbing = true;
         animator.SetBool("Knifestab", true);
-        //ani here
         yield return new WaitForSeconds(fireRate);
         isStabbing = false;
         animator.SetBool("Knifestab", false);
@@ -55,7 +56,7 @@ public class knifeBehavior : MonoBehaviour
     {
         isInsp = true;
         animator.SetBool("Knifeinspect", true);
-        //ani here
+
         yield return new WaitForSeconds(inspRate);
         isInsp = false;
         animator.SetBool("Knifeinspect", false);
