@@ -45,15 +45,19 @@ public class knifeBehavior : MonoBehaviour
             Debug.Log("Missed");
         }
         isStabbing = true;
+        animator.SetBool("Knifestab", true);
         //ani here
         yield return new WaitForSeconds(fireRate);
         isStabbing = false;
+        animator.SetBool("Knifestab", false);
     }
     IEnumerator inspect()
     {
         isInsp = true;
+        animator.SetBool("Knifeinspect", true);
         //ani here
         yield return new WaitForSeconds(inspRate);
         isInsp = false;
+        animator.SetBool("Knifeinspect", false);
     }
 }

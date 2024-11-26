@@ -1283,7 +1283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &629198468
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6244,6 +6244,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8643717283256226710}
     - target: {fileID: 6777754905592398894, guid: beed1a57d78cd02498bc3c2ffa426091, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 726597634}
+    - target: {fileID: 6777754905592398894, guid: beed1a57d78cd02498bc3c2ffa426091, type: 3}
       propertyPath: weaponBehavior
       value: 
       objectReference: {fileID: 8035509810531837927}
@@ -6449,7 +6453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223917305970520512, guid: 9b2b845cf744e014384a8d9a8accdeb5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1407438572532551721, guid: 9b2b845cf744e014384a8d9a8accdeb5, type: 3}
       propertyPath: m_Layer

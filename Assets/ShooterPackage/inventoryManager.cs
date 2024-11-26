@@ -10,6 +10,7 @@ public class inventoryManager : MonoBehaviour
     public weaponBehavior weaponBehavior;
     public float switchdelay = 1.5f;
     public bool SwitchBool = false;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,9 @@ public class inventoryManager : MonoBehaviour
        
         knife.SetActive(true);
         ak.SetActive(false);
+        animator.SetBool("Aniidle", false);
+        animator.SetBool("Knifeidle", true);
+       
         yield return new WaitForSeconds(switchdelay);
         SwitchBool = true;
     }
@@ -54,6 +58,9 @@ public class inventoryManager : MonoBehaviour
       
         ak.SetActive(true);
         knife.SetActive(false);
+        animator.SetBool("Knifeidle", false);
+        animator.SetBool("Aniidle", true);
+       
         yield return new WaitForSeconds(switchdelay);
         SwitchBool = false;
     }
