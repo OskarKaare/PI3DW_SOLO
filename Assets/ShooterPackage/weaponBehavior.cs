@@ -14,10 +14,11 @@ public class weaponBehavior : MonoBehaviour
     public float reloadDelay= 2f;
     public bool isReloading = false;
     public Animator animator;
-    private bool isShooting = false;
+    public bool isShooting = false;
     public Camera fpsCam;
+    public bool isInsp = false;
+    public int inspRate = 2;
 
-    
 
 
 
@@ -31,15 +32,19 @@ public class weaponBehavior : MonoBehaviour
     void Update()
     {
        // if mousebutton 0 is pressed
-        if (Input.GetMouseButton(0) && currentAmmo > 0 && !isReloading && !isShooting)
+        if (Input.GetMouseButton(0) && currentAmmo > 0 && !isReloading && !isShooting && !isInsp)
         {
             StartCoroutine(shoot());
             Debug.Log("Shooting");
         }
-        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxClip && !isReloading && maxAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxClip && maxAmmo > 0 && !isReloading && !isInsp )
         {
             StartCoroutine(reload());
             Debug.Log("Reloading");
+        }
+        if (Input.GetKeyDown(KeyCode.F) && !isReloading && !isShooting)
+        {
+            StartCoroutine(inspect());
         }
     }
   
@@ -47,7 +52,7 @@ public class weaponBehavior : MonoBehaviour
     {
         
         isReloading = true;
-        //ani here
+        animator.SetBool("Anireload", true);
         yield return new WaitForSeconds(reloadDelay);
 
         if (currentAmmo > 0)
@@ -75,6 +80,7 @@ public class weaponBehavior : MonoBehaviour
         }
         // animator.SetBool("Reloading", false);
         isReloading = false;
+        animator.SetBool("Anireload", false);
     }
     IEnumerator shoot()
     {
@@ -95,8 +101,7 @@ public class weaponBehavior : MonoBehaviour
         {
             Debug.Log("Missed");
         }
-       
-        //muzzleFlash.Play();
+
         currentAmmo--;
         if (currentAmmo <= 0 && maxAmmo>0)
         {
@@ -107,13 +112,20 @@ public class weaponBehavior : MonoBehaviour
             //play click sound /no ammo stuff
             Debug.Log("No Ammo");
         }
-  
+        //muzzleFlash.Play();
         isShooting = true;
-
+        animator.SetBool("Anishoot", true);
         yield return new WaitForSeconds(fireRate);
-
+        animator.SetBool("Anishoot", false);
         isShooting = false;
     }
-  
-   
+
+    IEnumerator inspect()
+    {
+        animator.SetBool("Aniinspect", true);
+        isInsp = true;
+        yield return new WaitForSeconds(inspRate);
+        animator.SetBool("Aniinspect", false);
+        isInsp = false;
+    }
 }
