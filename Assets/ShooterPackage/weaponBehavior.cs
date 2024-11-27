@@ -112,7 +112,7 @@ public class weaponBehavior : MonoBehaviour
             //play click sound /no ammo stuff
             Debug.Log("No Ammo");
         }
-        //muzzleFlash.Play();
+        muzzleFlash.Play();
         isShooting = true;
         animator.SetBool("Anishoot", true);
         yield return new WaitForSeconds(fireRate);
