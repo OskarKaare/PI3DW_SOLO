@@ -12,12 +12,7 @@ public class knifeBehavior : MonoBehaviour
     public bool isInsp = false;
     public Camera fpsCam;
     public EnemyBehavior enemyBehavior;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+  
     // Update is called once per frame
     void Update()
     {
