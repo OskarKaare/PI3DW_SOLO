@@ -132,4 +132,10 @@ public class weaponBehavior : MonoBehaviour
         animator.SetBool("Aniinspect", false);
         isInsp = false;
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(fpsCam.transform.position, fpsCam.transform.forward * 200f);
+    }
+    
 }

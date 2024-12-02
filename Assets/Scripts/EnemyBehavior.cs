@@ -104,6 +104,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             rb.transform.gameObject.layer = LayerMask.NameToLayer("ragdoll");
         }
+        StopAllCoroutines();
     }
     IEnumerator DamageDelay()
     {
