@@ -16,8 +16,8 @@ public class EnemyBehavior : MonoBehaviour
     private Transform[] patrolPoints;
     private int currentPatrolIndex;
     private State state;
-    private int health = 100;
-    private int damage = 33;
+    public int health = 100;
+    public int damage = 33;
     public PlayerMovement playerMovement;
     private bool canDamage = true;
     public Animator enemyAni;

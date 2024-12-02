@@ -36,7 +36,7 @@ public class knifeBehavior : MonoBehaviour
     {
 
         Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, 5f);
-        if (hit.collider.tag == "Enemy")
+        if (hit.collider != null && hit.collider.tag == "Enemy")
         {
             Debug.Log("Hit Enemy");
             enemyBehavior.TakeDamage(damage);
