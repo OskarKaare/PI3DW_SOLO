@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     private int damage = 33;
     public PlayerMovement playerMovement;
     private bool canDamage = true;
+    public Animator enemyAni;
 
     
 
@@ -34,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour
         patrolPoints = new Transform[] { patrol1, patrol2, patrol3 };
         currentPatrolIndex = 0;
         Patrol();
+        
     }
 
     void Update()
@@ -94,15 +96,23 @@ public class EnemyBehavior : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        agent.enabled = false;
+        enemyAni.enabled = false;
+        Rigidbody[] ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in ragdollRigidbodies)
+        {
+            rb.transform.gameObject.layer = LayerMask.NameToLayer("ragdoll");
+        }
     }
      IEnumerator DamageDelay()
      {
         canDamage = false;
+
         Debug.Log("Player took damage");
         playerMovement.TakeDamage(damage);
         yield return new WaitForSeconds(1);
         canDamage = true;
+
     }
     
 
