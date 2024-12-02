@@ -21,19 +21,19 @@ public class inventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if(SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
+            if (SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
             {
-               
+
                 StartCoroutine(switchDelayToKnife());
-             
+
             }
-            else if(SwitchBool == true && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
-            {    
-               
+            else if (SwitchBool == true && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
+            {
+
                 StartCoroutine(switchDelayToAk());
-              
+
             }
             else
             {
@@ -44,23 +44,23 @@ public class inventoryManager : MonoBehaviour
 
     IEnumerator switchDelayToKnife()
     {
-       
+
         knife.SetActive(true);
         ak.SetActive(false);
         animator.SetBool("Aniidle", false);
         animator.SetBool("Knifeidle", true);
-       
+
         yield return new WaitForSeconds(switchdelay);
         SwitchBool = true;
     }
     IEnumerator switchDelayToAk()
     {
-      
+
         ak.SetActive(true);
         knife.SetActive(false);
         animator.SetBool("Knifeidle", false);
         animator.SetBool("Aniidle", true);
-       
+
         yield return new WaitForSeconds(switchdelay);
         SwitchBool = false;
     }

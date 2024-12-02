@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -21,12 +22,12 @@ public class EnemyBehavior : MonoBehaviour
     private bool canDamage = true;
     public Animator enemyAni;
 
-    
+
 
     enum State
     {
         PATROL,
-        CHASE
+        CHASE,
     }
 
     void Start()
@@ -35,7 +36,7 @@ public class EnemyBehavior : MonoBehaviour
         patrolPoints = new Transform[] { patrol1, patrol2, patrol3 };
         currentPatrolIndex = 0;
         Patrol();
-        
+
     }
 
     void Update()
@@ -75,15 +76,15 @@ public class EnemyBehavior : MonoBehaviour
         agent.SetDestination(player.position);
         if (agent.remainingDistance < attackDistance)
         {
-            if(canDamage)
+            if (canDamage)
             {
                 Debug.Log("Player caught!");
                 StartCoroutine(DamageDelay());
             }
         }
 
+
     }
-   
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -104,16 +105,17 @@ public class EnemyBehavior : MonoBehaviour
             rb.transform.gameObject.layer = LayerMask.NameToLayer("ragdoll");
         }
     }
-     IEnumerator DamageDelay()
-     {
+    IEnumerator DamageDelay()
+    {
         canDamage = false;
-
+        enemyAni.SetBool("isAttacking", true);
         Debug.Log("Player took damage");
         playerMovement.TakeDamage(damage);
         yield return new WaitForSeconds(1);
+        enemyAni.SetBool("isAttacking", false);
         canDamage = true;
 
     }
     
-
+    
 }

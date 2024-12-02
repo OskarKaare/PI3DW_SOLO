@@ -15,18 +15,18 @@ public class knifeBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !isStabbing && !isInsp)
+        if (Input.GetMouseButtonDown(0) && !isStabbing && !isInsp)
         {
             StartCoroutine(stab());
             Debug.Log("Stabbing");
         }
-        if(Input.GetKeyDown(KeyCode.F) && !isInsp)
+        if (Input.GetKeyDown(KeyCode.F) && !isInsp)
         {
             StartCoroutine(inspect());
             Debug.Log("Inspecting knife");
@@ -34,7 +34,7 @@ public class knifeBehavior : MonoBehaviour
     }
     IEnumerator stab()
     {
-       
+
         Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, 5f);
         if (hit.collider.tag == "Enemy")
         {
