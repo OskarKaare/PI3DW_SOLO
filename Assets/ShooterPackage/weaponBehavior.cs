@@ -92,6 +92,10 @@ public class weaponBehavior : MonoBehaviour
                 Debug.Log("Hit Enemy");
                 hit.collider.GetComponent<EnemyBehavior>().TakeDamage(damage);
             }
+            else if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("ragdoll"))         
+            {
+              hit.collider.GetComponent<Rigidbody>().AddForce (-hit.normal * 10000);
+            }
             else
             {
                 Debug.Log("Missed");
@@ -101,7 +105,7 @@ public class weaponBehavior : MonoBehaviour
         {
             Debug.Log("Missed");
         }
-
+        
         currentAmmo--;
         if (currentAmmo <= 0 && maxAmmo>0)
         {
