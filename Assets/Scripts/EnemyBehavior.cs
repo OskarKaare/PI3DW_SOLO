@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     public PlayerMovement playerMovement;
     private bool canDamage = true;
     public Animator enemyAni;
-
+    public bool isDead = false;
 
 
     enum State
@@ -41,6 +41,10 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
         switch (state)
         {
             case State.PATROL:
@@ -97,6 +101,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     void Die()
     {
+        isDead = true;
         agent.enabled = false;
         enemyAni.enabled = false;
         Rigidbody[] ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
