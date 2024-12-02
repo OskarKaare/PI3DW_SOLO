@@ -35,15 +35,19 @@ public class knifeBehavior : MonoBehaviour
     IEnumerator stab()
     {
 
-        Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, 5f);
+        Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out RaycastHit hit, 10f);
         if (hit.collider != null && hit.collider.tag == "Enemy")
         {
-            Debug.Log("Hit Enemy");
-            enemyBehavior.TakeDamage(damage);
+            Debug.Log("stabbed Enemy");
+            hit.collider.GetComponent<EnemyBehavior>().TakeDamage(damage);
+        }
+        else if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("ragdoll"))
+        {
+            hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * 10000);
         }
         else
         {
-            Debug.Log("Missed");
+            Debug.Log("stab Missed");
         }
 
         isStabbing = true;

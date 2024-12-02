@@ -63,13 +63,13 @@ public class weaponBehavior : MonoBehaviour
 
         if (maxAmmo >= maxClip)
         {
-            // animator.SetBool("Reloading", true);
+           
             currentAmmo = maxClip;
             maxAmmo -= maxClip;
         }
         else if (maxAmmo < maxClip && maxAmmo > 0)
         {
-            // animator.SetBool("Reloading", true);
+           
             currentAmmo = maxAmmo;
             maxAmmo = 0;
         }
@@ -78,7 +78,7 @@ public class weaponBehavior : MonoBehaviour
             currentAmmo = 0;
 
         }
-        // animator.SetBool("Reloading", false);
+       
         isReloading = false;
         animator.SetBool("Anireload", false);
     }

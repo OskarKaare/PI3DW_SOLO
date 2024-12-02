@@ -8,6 +8,7 @@ public class inventoryManager : MonoBehaviour
     public GameObject knife;
     public GameObject ak;
     public weaponBehavior weaponBehavior;
+    public knifeBehavior knifeBehavior;
     public float switchdelay = 1.5f;
     public bool SwitchBool = false;
     public Animator animator;
@@ -23,13 +24,13 @@ public class inventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
+            if (SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false && knifeBehavior.isInsp == false && knifeBehavior.isStabbing == false)
             {
 
                 StartCoroutine(switchDelayToKnife());
 
             }
-            else if (SwitchBool == true && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false)
+            else if (SwitchBool == true && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false && knifeBehavior.isInsp == false && knifeBehavior.isStabbing == false)
             {
 
                 StartCoroutine(switchDelayToAk());
