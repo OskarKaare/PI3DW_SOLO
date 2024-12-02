@@ -94,7 +94,7 @@ public class weaponBehavior : MonoBehaviour
             }
             else if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("ragdoll"))         
             {
-              hit.collider.GetComponent<Rigidbody>().AddForce (-hit.normal * 10000);
+              hit.collider.GetComponent<Rigidbody>().AddForce (-hit.normal * 1000);
             }
             else
             {
