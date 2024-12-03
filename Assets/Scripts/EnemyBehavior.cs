@@ -22,6 +22,8 @@ public class EnemyBehavior : MonoBehaviour
     private bool canDamage = true;
     public Animator enemyAni;
     public bool isDead = false;
+    public AudioSource Sound;
+   
 
 
     enum State
@@ -104,11 +106,14 @@ public class EnemyBehavior : MonoBehaviour
         isDead = true;
         agent.enabled = false;
         enemyAni.enabled = false;
+        // play audio clip when enemy dies
+        Sound.Play();
         Rigidbody[] ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in ragdollRigidbodies)
         {
             rb.transform.gameObject.layer = LayerMask.NameToLayer("ragdoll");
         }
+        GetComponent<Collider>().enabled = false;
         StopAllCoroutines();
     }
     IEnumerator DamageDelay()

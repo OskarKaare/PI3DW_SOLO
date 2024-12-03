@@ -18,6 +18,11 @@ public class weaponBehavior : MonoBehaviour
     public Camera fpsCam;
     public bool isInsp = false;
     public int inspRate = 2;
+    public AudioSource ShootSound;
+    public AudioSource ReloadSound;
+
+   
+   
 
 
 
@@ -52,6 +57,7 @@ public class weaponBehavior : MonoBehaviour
     {
         
         isReloading = true;
+       ReloadSound.Play();
         animator.SetBool("Anireload", true);
         yield return new WaitForSeconds(reloadDelay);
 
@@ -105,7 +111,7 @@ public class weaponBehavior : MonoBehaviour
         {
             Debug.Log("Missed");
         }
-        
+        ShootSound.PlayOneShot(ShootSound.clip);
         currentAmmo--;
         if (currentAmmo <= 0 && maxAmmo>0)
         {

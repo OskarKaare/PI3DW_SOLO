@@ -12,11 +12,11 @@ public class portalBehavior : MonoBehaviour
     {
        
     }
-    private void OnCollisionEnter(Collision collision)
+   // on collision with player
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player has entered the portal");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
