@@ -5,14 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class portalBehavior : MonoBehaviour
 {
-    public MeshCollider MeshCol;
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-   // on collision with player
+   // run method when player collides with the portal
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
