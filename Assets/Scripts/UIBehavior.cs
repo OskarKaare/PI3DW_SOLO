@@ -15,7 +15,9 @@ public class UIBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update the UI text with the current ammo count form the weaponBehavior script
         ammoCount.text = (weapon.currentAmmo + " / " + weapon.maxAmmo);
+        // Update the UI text with the current health from the PlayerMovement script
         health.text = ("Health: " + player.health+"%");
     }
 }

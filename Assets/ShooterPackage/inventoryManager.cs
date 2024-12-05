@@ -15,6 +15,7 @@ public class inventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // equips the ak as the starter weapon
         ak.SetActive(true);
         knife.SetActive(false);
     }
@@ -22,6 +23,7 @@ public class inventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // switches between the knife and the ak when q is pressed, if the player is not shooting, reloading, or inspecting
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (SwitchBool == false && weaponBehavior.isInsp == false && weaponBehavior.isReloading == false && weaponBehavior.isShooting == false && knifeBehavior.isInsp == false && knifeBehavior.isStabbing == false)
@@ -45,7 +47,7 @@ public class inventoryManager : MonoBehaviour
 
     IEnumerator switchDelayToKnife()
     {
-
+        // switches knife to active and ak to inactive and sets the animator bools to the corresponding correct values
         knife.SetActive(true);
         ak.SetActive(false);
         animator.SetBool("Aniidle", false);
@@ -56,7 +58,7 @@ public class inventoryManager : MonoBehaviour
     }
     IEnumerator switchDelayToAk()
     {
-
+        // switches ak to active and knife to inactive and sets the animator bools to the corresponding correct values
         ak.SetActive(true);
         knife.SetActive(false);
         animator.SetBool("Knifeidle", false);
